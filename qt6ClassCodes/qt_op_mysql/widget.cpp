@@ -27,23 +27,25 @@ Widget::Widget(QWidget *parent)
 Widget::~Widget()
 {
     delete ui;
+    if(m_db.isOpen())
+        m_db.close();
 }
 
 void Widget::connectMysqlDb()
 {
     //创建连接对象
-    QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
+    m_db = QSqlDatabase::addDatabase("QODBC");
     //设置数据库参数
-    db.setHostName("127.0.0.1");
-    db.setPort(3306);
-    db.setDatabaseName("mydata");
-    db.setUserName("root");
-    db.setPassword("root");
+    m_db.setHostName("127.0.0.1");
+    m_db.setPort(3306);
+    m_db.setDatabaseName("mydata");
+    m_db.setUserName("root");
+    m_db.setPassword("root");
     // 3. 尝试打开连接
-       if (db.open()) {
+       if (m_db.open()) {
            qDebug() << "连接成功！";
        } else {
-           qDebug() << "连接失败：" << db.lastError().text();
+           qDebug() << "连接失败：" << m_db.lastError().text();
        }
 }
 

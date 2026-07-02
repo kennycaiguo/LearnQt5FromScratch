@@ -196,5 +196,65 @@ Widget::Widget(QWidget *parent)
 
 ## 5.1新建一个qt widget项目起名，SqlserverQSqlQueryDemo，继承自QWidget,把界面调整小一点，并且添加一个TabelWidget
 
+![image-20260702124507692](./note11-实战项目1sql增删改查.assets/image-20260702124507692.png)
 
+
+
+## 5.2 打开.pro文件，添加对sql的支持
+
+![image-20260702124620319](./note11-实战项目1sql增删改查.assets/image-20260702124620319.png)
+
+## 5.3 包含sql相关头文件，这里不需要QSqlTableModel,我们这里使用QSqlQuery，标签添加一个QSqlQuery类型的成员变量
+
+![image-20260702124811483](./note11-实战项目1sql增删改查.assets/image-20260702124811483.png)
+
+![image-20260702124954891](./note11-实战项目1sql增删改查.assets/image-20260702124954891.png)
+
+## 5.4给connectSqlServer函数添加代码，并且在widget.cpp的构造函数里面调用整个函数
+
+![image-20260702125532296](./note11-实战项目1sql增删改查.assets/image-20260702125532296.png)
+
+### 运行程序，连接成功
+
+![image-20260702125602199](./note11-实战项目1sql增删改查.assets/image-20260702125602199.png)
+
+## 5.5给ui添加一个TabelWidget
+
+![image-20260702125747921](./note11-实战项目1sql增删改查.assets/image-20260702125747921.png)
+
+## 5.6修改一下connectSqlServer函数的代码
+
+![image-20260702131031170](./note11-实战项目1sql增删改查.assets/image-20260702131031170.png)
+
+### 运行程序，发现数据添加成功
+
+![image-20260702131117666](./note11-实战项目1sql增删改查.assets/image-20260702131117666.png)
+
+##  5.7然后我们给tablewidget添加一个处理点击的槽函数
+
+![image-20260702131405081](./note11-实战项目1sql增删改查.assets/image-20260702131405081.png)
+
+## 5.8然后我们添加一些标签和编辑框
+
+![image-20260702133413277](./note11-实战项目1sql增删改查.assets/image-20260702133413277.png)
+
+## 5.9然后我们给点击事件处理槽函数添加代码
+
+![image-20260702133505093](./note11-实战项目1sql增删改查.assets/image-20260702133505093.png)
+
+### 效果：
+
+![image-20260702133531143](./note11-实战项目1sql增删改查.assets/image-20260702133531143.png)
+
+### 注意：为了防止内存泄漏，我们需要把数据库对象定义为一个成员变量
+
+![image-20260702135318574](./note11-实战项目1sql增删改查.assets/image-20260702135318574.png)
+
+### 然后我们需要修改一下代码
+
+![image-20260702135415477](./note11-实战项目1sql增删改查.assets/image-20260702135415477.png)
+
+### 还需要在Widget类的析构函数里面关闭数据库连接，因为程序都语句结束了，数据库连接就不需要了。
+
+## 数据库暂时学习到这里，以后我们需要对这些项目进行扩展
 

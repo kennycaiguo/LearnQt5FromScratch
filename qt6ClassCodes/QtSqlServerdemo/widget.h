@@ -29,5 +29,6 @@ private slots:
 private:
     Ui::Widget *ui;
     QSqlTableModel *m_model;
+    QSqlDatabase m_db;
 };
 #endif // WIDGET_H

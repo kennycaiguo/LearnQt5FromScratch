@@ -7,13 +7,13 @@ Widget::Widget(QWidget *parent)
 {
     ui->setupUi(this);
     //配置数据库
-    QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
-    db.setHostName("localhost");
-    db.setDatabaseName("company");
-    db.setUserName("sa");
-    db.setPassword("sa12345");
+    m_db = QSqlDatabase::addDatabase("QODBC");
+    m_db.setHostName("localhost");
+    m_db.setDatabaseName("company");
+    m_db.setUserName("sa");
+    m_db.setPassword("sa12345");
     //数据库链接测试
-    bool ret = db.open();
+    bool ret = m_db.open();
     if(!ret)
         QMessageBox::critical(this,"error","打开数据库失败");
     //数据查询
@@ -28,6 +28,9 @@ Widget::Widget(QWidget *parent)
 Widget::~Widget()
 {
     delete ui;
+    if(m_db.isOpen()){
+        m_db.close();
+    }
 }
 
 
