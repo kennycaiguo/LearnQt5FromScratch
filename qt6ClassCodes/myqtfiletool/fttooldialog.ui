@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FTtoolDialog</class>
+ <widget class="QDialog" name="FTtoolDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>750</width>
+    <height>402</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>极速文件传输工具Qt版</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="res.qrc">
+    <normaloff>:/images/ftlogo.png</normaloff>:/images/ftlogo.png</iconset>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>30</y>
+     <width>69</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>服务器IP:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="ed_ip">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>30</y>
+     <width>191</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>127.0.0.1</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>30</y>
+     <width>81</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>服务器端口：</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="ed_port">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>30</y>
+     <width>191</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>6005</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_send">
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>30</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>发送文件</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="ed_src">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>70</y>
+     <width>501</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>70</y>
+     <width>69</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>发送文件:</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_choose">
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>70</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>选择文件</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>110</y>
+     <width>69</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>发送进度:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>150</y>
+     <width>69</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>发送状态:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="ed_send_status">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>150</y>
+     <width>591</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>10</y>
+     <width>701</width>
+     <height>171</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>文件发送</string>
+   </property>
+   <widget class="QProgressBar" name="pbar_send">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>102</y>
+      <width>601</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLineEdit" name="ed_recv_status">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>350</y>
+     <width>591</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>310</y>
+     <width>69</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>接收进度:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>230</y>
+     <width>69</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>监听端口:</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_2">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>210</y>
+     <width>701</width>
+     <height>171</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>文件接收</string>
+   </property>
+   <widget class="QProgressBar" name="pbar_recv">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>100</y>
+      <width>611</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>350</y>
+     <width>69</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>接收状态:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>270</y>
+     <width>69</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>接收文件:</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_listen">
+   <property name="geometry">
+    <rect>
+     <x>512</x>
+     <y>230</y>
+     <width>211</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>开始监听</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="ed_listen_port">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>230</y>
+     <width>361</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>6005</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="ed_dst">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>270</y>
+     <width>591</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <zorder>groupBox_2</zorder>
+  <zorder>groupBox</zorder>
+  <zorder>label</zorder>
+  <zorder>ed_ip</zorder>
+  <zorder>label_2</zorder>
+  <zorder>ed_port</zorder>
+  <zorder>btn_send</zorder>
+  <zorder>ed_src</zorder>
+  <zorder>label_3</zorder>
+  <zorder>btn_choose</zorder>
+  <zorder>label_4</zorder>
+  <zorder>label_5</zorder>
+  <zorder>ed_send_status</zorder>
+  <zorder>ed_recv_status</zorder>
+  <zorder>label_6</zorder>
+  <zorder>label_8</zorder>
+  <zorder>label_9</zorder>
+  <zorder>label_10</zorder>
+  <zorder>btn_listen</zorder>
+  <zorder>ed_listen_port</zorder>
+  <zorder>ed_dst</zorder>
+ </widget>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
+ <connections/>
+</ui>
