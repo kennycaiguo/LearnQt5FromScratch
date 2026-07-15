@@ -1,4 +1,4 @@
-# 1.内容提要
+# 1-3.停靠窗口，堆栈窗口和覆盖窗口
 
 ![image-20260616145308531](./note5-布局管理.assets/image-20260616145308531.png)
 
@@ -306,9 +306,9 @@ Dialog::~Dialog()
 
 ![image-20260616174826107](./note5-布局管理.assets/image-20260616174826107.png)
 
-# 2，老师案例
+## 老师案例
 
-### 2.1 第一个停靠窗口案例
+### 1 第一个停靠窗口案例
 
 ![image-20260623171534027](./note5-布局管理.assets/image-20260623171534027.png)
 
@@ -326,7 +326,7 @@ Dialog::~Dialog()
 
 ![image-20260623173703081](./note5-布局管理.assets/image-20260623173703081.png)
 
-### 2.2 第二个停靠窗口案例
+### 2.第二个停靠窗口案例
 
 ![image-20260623182404112](./note5-布局管理.assets/image-20260623182404112.png)
 
@@ -345,3 +345,36 @@ Dialog::~Dialog()
 
 
 ![image-20260623183406976](./note5-布局管理.assets/image-20260623183406976.png)
+
+# 4.QLayout类详解
+
+#include <QApplication>
+#include <QWidget>
+#include <QPushButton>
+#include <QHBoxLayout>
+
+int main(int argc, char *argv[]) {
+    QApplication app(argc, argv);
+    
+    QWidget *window = new QWidget();
+    window->setWindowTitle("QLayout 示例");
+    
+    QPushButton *button1 = new QPushButton("按钮 1");
+    QPushButton *button2 = new QPushButton("按钮 2");
+    QPushButton *button3 = new QPushButton("按钮 3");
+    
+    // 1. 创建一个水平布局管理器
+    QHBoxLayout *layout = new QHBoxLayout();
+    
+    // 2. 将按钮添加到布局中
+    layout->addWidget(button1);
+    layout->addWidget(button2);
+    layout->addWidget(button3);
+    
+    // 3. 将布局应用到窗口上
+    window->setLayout(layout);
+    
+    window->show();
+    return app.exec();
+}
+

@@ -239,3 +239,19 @@ Dialog::~Dialog()
 
 ```
 
+## 小技巧：Qt伙伴编辑模式（Buddy Editing Mode）
+
+Qt伙伴编辑模式（Buddy Editing Mode）能把标签（`QLabel`）和输入框等控件连接起来。这样，当用户按下标签上的快捷键时，输入框就会自动获得焦点。
+
+在 `Qt Designer` 中按 **F4** 键即可切换此模式。 [[1](https://www.cnblogs.com/suntroop/articles/18605783), [2](https://doc.qt.io/qt-6.8/zh/designer-editing-mode.html)]
+
+操作步骤
+
+1. 按下 **F4** 切换到伙伴编辑模式。
+2. 点击一个标签（`QLabel`）并按住鼠标。
+3. 拖动线条到对应的输入框（如 `QLineEdit`）上释放鼠标。
+4. 标签文字需要包含“&”符号才能触发快捷键（例如：将文字设为 `&Name` 时，快捷键为 `Alt + N`）。 [[1](https://www.cnblogs.com/suntroop/articles/18605783), [2](https://doc.qt.io/qt-6.8/zh/designer-editing-mode.html)]
+
+原理类比
+
+就像是电灯开关和灯泡的关系。标签（开关）本身无法输入文字，但通过伙伴关系，标签可以将焦点“指引”给输入框（灯泡），让界面操作更高效。

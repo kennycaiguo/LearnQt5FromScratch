@@ -31,3 +31,10 @@
 # 4.使用Qt自带的线程类实战(QThread)
 
 ## 自己学习
+
+
+
+## 参考代码
+
+## 1.https://github.com/rutura/ThreadingIPCCode
+

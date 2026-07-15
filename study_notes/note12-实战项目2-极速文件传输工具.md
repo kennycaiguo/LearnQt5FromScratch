@@ -93,3 +93,129 @@
 ![image-20260702201929250](./note12-实战项目2-极速文件传输工具.assets/image-20260702201929250.png)
 
 ## 老师的视频到此为止，剩下的需要自己慢慢完成
+
+# 避坑指南
+
+## 1.QDirModel已经过时在qt6被移除了，需要使用QFileSystemModel
+
+## 2.出现“'QRegExp' was not declared in this scope”错误，通常是因为你使用的是新版 Qt (Qt 6 及以上)。在新版本中，旧的 `QRegExp` 已经被移除，官方推荐使用性能更好、语法更规范的 `QRegularExpression`
+
+旧代码：
+
+cpp
+
+```
+QRegExp rx("\\d+");
+if (rx.indexIn(myString) != -1) {
+    QString match = rx.cap(0);
+} # 在qt6会报错
+```
+
+新代码：
+
+cpp
+
+```
+QRegularExpression rx("\\d+");
+QRegularExpressionMatch match = rx.match(myString);
+if (match.hasMatch()) {
+    QString matchedString = match.captured(0);
+}
+```
+
+## 3.出现 `'QDesktopWidget' was not declared in this scope` 错误，是因为你正在使用 **Qt 6**。在 **Qt 6** 中，`QDesktopWidget` 及其配套的 `QApplication::desktop()` 已经被完全移除。 [[1](https://doc.qt.io/qt-6/widgets-changes-qt6.html)]
+
+要解决这个问题，你需要将代码替换为现代的 **`QScreen`** API。 [[1](https://doc.qt.io/qt-6/widgets-changes-qt6.html)]
+
+快速替换指南
+
+请参考以下常用的代码替换方案，将原来的 `QDesktopWidget` 改为 `QScreen`：
+
+1. 获取屏幕分辨率 (Screen Size)
+
+- **旧代码 (Qt 5):**
+
+  cpp
+
+  ```
+  QDesktopWidget *desktop = QApplication::desktop();
+  QRect rect = desktop->screenGeometry();
+  int width = rect.width();
+  int height = rect.height();
+  ```
+
+  请谨慎使用此类代码。
+
+- **新代码 (Qt 6):**
+
+  cpp
+
+  ```
+  QScreen *screen = QGuiApplication::primaryScreen();
+  QRect rect = screen->geometry();
+  int width = rect.width();
+  int height = rect.height();
+  ```
+
+  请谨慎使用此类代码。
+
+  
+
+- 获取任务栏可见工作区 (Available Geometry)
+
+- **旧代码 (Qt 5):**
+
+  cpp
+
+  ```
+  QDesktopWidget *desktop = QApplication::desktop();
+  QRect rect = desktop->availableGeometry();
+  ```
+
+  请谨慎使用此类代码。
+
+- **新代码 (Qt 6):**
+
+  cpp
+
+  ```
+  QScreen *screen = QGuiApplication::primaryScreen();
+  QRect rect = screen->availableGeometry();
+  ```
+
+  请谨慎使用此类代码。
+
+  
+
+- 将窗口居中显示 (Center on Screen)
+
+- **旧代码 (Qt 5):**
+
+  cpp
+
+  ```
+  QDesktopWidget *desktop = QApplication::desktop();
+  move((desktop->width() - width()) / 2, (desktop->height() - height()) / 2);
+  ```
+
+  请谨慎使用此类代码。
+
+- **新代码 (Qt 6):**
+
+  cpp
+
+  ```
+  QScreen *screen = QGuiApplication::primaryScreen();
+  QRect screenGeometry = screen->availableGeometry();
+  move((screenGeometry.width() - width()) / 2, (screenGeometry.height() - height()) / 2);
+  ```
+
+  请谨慎使用此类代码。
+
+  
+
+💡 核心类对比记忆
+
+可以把 `QScreen` 看作是一个虚拟的显示器接口。
+
+- `QApplication::desktop()` 所有的屏幕信息，现在交给了 `QGuiApplication::screens()`（所有屏幕）和 `QGuiApplication::primaryScreen()`

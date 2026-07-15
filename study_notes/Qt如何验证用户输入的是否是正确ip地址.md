@@ -6,6 +6,15 @@
 
 这是最简单、最安全的验证方式。`QHostAddress` 自带解析功能，如果 IP 地址格式正确，它会返回 `true`。
 
+Qt 找不到 `QHostAddress` 头文件，通常是因为没有在项目配置文件中启用网络模块。 [[1](https://blog.csdn.net/qq_21530185/article/details/147167618), [2](https://stackoverflow.com/questions/28917146/qt-qhostaddress-no-such-file-or-directory)]
+
+以下是具体的解决步骤：
+
+1. **添加网络模块**
+   - 如果你使用的是 **qmake**（即 `.pro` 文件），打开文件并在末尾添加：
+     `QT += network`
+   - 如果你使用的是 **CMake**（即 `CMakeLists.txt` 文件），确保在 `find_package` 中包含 `Network`，并在 `target_link_libraries` 中添加 `Qt6::Network`（或 `Qt5::Network`）
+
 cpp
 
 ```
