@@ -14,6 +14,12 @@
 
 ### 参考网址5：https://developer.aliyun.com/article/838245
 
+### 参考源码
+
+## https://github.com/nitroshare/nitroshare-desktop
+
+
+
 # 课程演练
 
 ## 1.新建一个项目， 起名myqtfiletool,继承自QDialog
