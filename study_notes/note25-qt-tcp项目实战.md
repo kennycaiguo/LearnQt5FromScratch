@@ -36,5 +36,9 @@
 
 ## 6. https://github.com/HuaGouFdog/FdogInstantMessaging
 
+## 7. https://github.com/AmJun/Qt_tcp_thread
+
+## 8. https://github.com/bansheng/Socket_chat
+
 
 
