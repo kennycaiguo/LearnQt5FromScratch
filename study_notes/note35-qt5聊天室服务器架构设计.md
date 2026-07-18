@@ -22,3 +22,5 @@
 
 ## 5. https://github.com/onestraw/pychat
 
+## 6. https://github.com/Taurus-Chao/ChatRoom_Qt5
+

@@ -28,5 +28,9 @@
 
 ## 9. https://github.com/jinguoliang/ChatInLan_Python_Qt5
 
+## 10. https://github.com/xzajyjs/QT_Chat
+
+
+
 
 
